@@ -74,6 +74,7 @@ const handlePrismaError = (err: Error): CustomError | null => {
 };
 
 const globalErrorHandler: ErrorRequestHandler = (err, req, res, next) => {
+  console.log(err);
   const prismaHandled = handlePrismaError(err);
   const error = prismaHandled ?? (err as CustomError);
 
