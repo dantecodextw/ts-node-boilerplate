@@ -1,5 +1,5 @@
 import Joi from 'joi';
-import validationHelper from '../utils/joiValidationHelper';
+import validationHelper from '../utils/validationHelper.utils';
 
 const signup = new validationHelper({
   name: Joi.string().min(3).required(),

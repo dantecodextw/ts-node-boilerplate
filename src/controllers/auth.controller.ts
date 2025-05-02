@@ -6,6 +6,7 @@ import authService from '../services/auth.service';
 const signup = asyncErrorHandler(async (req, res) => {
   const validatedData = authValidation.signup.validate(req.body) as SignupData;
   const data = await authService.signup(validatedData);
+  console.log(data);
   res.status(201).json({
     message: 'User has been created',
     data,

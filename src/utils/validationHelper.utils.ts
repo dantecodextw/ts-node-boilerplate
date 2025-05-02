@@ -1,5 +1,5 @@
 import Joi, { Schema, ValidationErrorItem } from 'joi';
-import CustomError from './customErrorHandler';
+import CustomError from './customError.utils';
 
 class validationHelper {
   public schema: Schema | Record<string, any>;
