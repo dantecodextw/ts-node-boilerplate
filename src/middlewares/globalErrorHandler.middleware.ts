@@ -74,7 +74,6 @@ const handlePrismaError = (err: Error): CustomError | null => {
 };
 
 const globalErrorHandler: ErrorRequestHandler = (err, req, res, next) => {
-  console.log(err);
   const prismaHandled = handlePrismaError(err);
   const error = prismaHandled ?? (err as CustomError);
 
@@ -98,5 +97,15 @@ const globalErrorHandler: ErrorRequestHandler = (err, req, res, next) => {
 
   res.status(error.statusCode ?? 500).json(payload);
 };
+
+process.on('uncaughtException', (error) => {
+  console.error('Uncaught Exception', error);
+  process.exit(1);
+});
+
+process.on('unhandledRejection', (error) => {
+  console.error('Unhandled Rejection', error);
+  process.exit(1);
+});
 
 export default globalErrorHandler;
